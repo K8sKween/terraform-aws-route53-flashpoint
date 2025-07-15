@@ -13,7 +13,7 @@ resource "aws_lambda_function" "create_record_lambda" {
   function_name    = "create_record_lambda"
   role             = aws_iam_role.lambda_execution_role.arn
   handler          = "create_record.lambda_handler"
-  runtime          = "python3.9"
+  runtime          = "python3.11"
   source_code_hash = data.archive_file.create_record_lambda_zip.output_base64sha256
   tags             = var.common_tags
   environment {
@@ -41,7 +41,7 @@ resource "aws_lambda_function" "delete_expired_records_lambda" {
   function_name    = "delete_expired_records"
   role             = aws_iam_role.lambda_execution_role.arn
   handler          = "delete_expired.lambda_handler"
-  runtime          = "python3.9"
+  runtime          = "python3.11"
   source_code_hash = data.archive_file.delete_expired_records_lambda_zip.output_base64sha256
   tags             = var.common_tags
   environment {
@@ -68,7 +68,7 @@ resource "aws_lambda_function" "records_report_lambda" {
   function_name    = "generate_flashpoint_records_report"
   role             = aws_iam_role.lambda_execution_role.arn
   handler          = "generate_report.lambda_handler"
-  runtime          = "python3.9"
+  runtime          = "python3.11"
   source_code_hash = data.archive_file.records_report_lambda_zip.output_base64sha256
   tags             = var.common_tags
   environment {
