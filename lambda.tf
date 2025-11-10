@@ -15,6 +15,7 @@ resource "aws_lambda_function" "create_record_lambda" {
   handler          = "create_record.lambda_handler"
   runtime          = "python3.11"
   source_code_hash = data.archive_file.create_record_lambda_zip.output_base64sha256
+  timeout          = 15
   tags             = var.common_tags
   environment {
     variables = {
@@ -43,6 +44,7 @@ resource "aws_lambda_function" "delete_expired_records_lambda" {
   handler          = "delete_expired.lambda_handler"
   runtime          = "python3.11"
   source_code_hash = data.archive_file.delete_expired_records_lambda_zip.output_base64sha256
+  timeout          = 15
   tags             = var.common_tags
   environment {
     variables = {
@@ -70,6 +72,7 @@ resource "aws_lambda_function" "records_report_lambda" {
   handler          = "generate_report.lambda_handler"
   runtime          = "python3.11"
   source_code_hash = data.archive_file.records_report_lambda_zip.output_base64sha256
+  timeout          = 15
   tags             = var.common_tags
   environment {
     variables = {
